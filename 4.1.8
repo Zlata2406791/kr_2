@@ -1,0 +1,18 @@
+#  Группе студентов в результате полусеместровой аттестации были выставлены оценки по информатике, а также определено количество пропущенных занятий. Успеваемость каждого студента оценивается следующими баллами: «0» (неаттестован), «2», «3», «4» или «5». Вывести список неуспевающих (оценка «2») студентов в порядке убывания количества пропущенных ими занятий.
+print('Задание 4 лабы 1 уровня 8 номер')
+import numpy as np
+A = np.random.randint(-100, 100, size=(4, 6))
+print("Матрица A:")
+print(A)
+mean_values = []
+for row in A:
+    positive_elements = row[row > 0]
+    if len(positive_elements) > 0:
+        mean_value = np.mean(positive_elements)
+    else:
+        mean_value = 0
+    mean_values.append(mean_value)
+mean_array = np.array(mean_values)
+
+print("Массив средних значений среди положительных элементов строк:")
+print(mean_array)
