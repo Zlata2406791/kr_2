@@ -1,0 +1,8 @@
+# Выводит 8 24 4
+import random
+from random import randint
+random.seed(3104)
+s1 = randint(1, 33)
+s2 = randint(1, 28)
+s3 = randint(1, 6)
+print(s1, s2, s3)
