@@ -1,0 +1,50 @@
+# В двух заданных квадратных матрицах столбец, содержащий максимальный элемент матрицы, поменять местами с главной диагональю. Поиск максимального элемента и дальнейшее преобразование матрицы оформить в виде методов
+print('Задание 5 лабы 2 уровня 24 номер')
+import numpy as np
+
+class MatrixManipulator:
+    def __init__(self, matrix):
+        self.matrix = np.array(matrix)
+    def find_max_column(self):
+        max_value = self.matrix.max()
+        max_indices = np.argwhere(self.matrix == max_value)
+        if max_indices.size > 0:
+            max_row, max_col = max_indices[0]
+            return max_row, max_col
+        return None, None
+
+    def swap_diagonal_with_column(self):
+        max_row, max_col = self.find_max_column()        
+        if max_col is not None:
+            for i in range(self.matrix.shape[0]):
+                temp = self.matrix[i, i]
+                self.matrix[i, i] = self.matrix[i, max_col]
+                self.matrix[i, max_col] = temp
+
+    def __str__(self):
+        return str(self.matrix)
+matrix1 = [[1, 2, 3],
+           [4, 5, 6],
+           [7, 8, 9]]
+
+matrix2 = [[9, 2, 5],
+           [1, 7, 6],
+           [8, 3, 4]]
+
+manipulator1 = MatrixManipulator(matrix1)
+manipulator2 = MatrixManipulator(matrix2)
+
+print("Первоначальная матрица 1:")
+print(manipulator1)
+
+print("Первоначальная матрица 2:")
+print(manipulator2)
+
+manipulator1.swap_diagonal_with_column()
+manipulator2.swap_diagonal_with_column()
+
+print("\nПреобразованная матрица 1:")
+print(manipulator1)
+
+print("Преобразованная матрица 2:")
+print(manipulator2)
